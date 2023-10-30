@@ -11,6 +11,10 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+      - name: Add remote Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: git remote add space https://poolkit:$HF_TOKEN@huggingface.co/spaces/poolkit/TradeWISE
       - name: Push to Spaces
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
