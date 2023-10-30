@@ -2,7 +2,7 @@
 title: TradeWISE
 emoji: 💸
 colorFrom: yellow
-colorTo: indigo
+colorTo: green
 sdk: docker
 pinned: false
 license: mit
