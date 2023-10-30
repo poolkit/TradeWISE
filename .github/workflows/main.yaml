@@ -4,7 +4,7 @@ on:
     branches: [main]
 
 jobs:
-  sync-to-spaces:
+  Sync-To-Spaces:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
