@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "TradeWISE",
+    "version": "1.0",
+    "description": "Streamlining financial news and distilling key insights, empowering smarter trading decisions through LLMs.",
+    "permissions": [
+      "activeTab",
+      "storage"
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images/icon16.png",
+        "32": "images/icon32.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+      }
+    },
+    "icons": {
+      "16": "images/icon16.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  }
+  
