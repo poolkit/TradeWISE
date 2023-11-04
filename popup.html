@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Extension</title>
+    <script src="popup.js"></script>
+  </head>
+  <body>
+
+    <div id="homePage">
+        <h2>Welcome to My Extension</h2>
+        <p>Enter your API Key:</p>
+        <input type="text" id="api-key">
+        <button id="save-api-key">Save</button>
+    </div>
+
+    <div id="getText" style="display: none;">
+        <h1>Saved Input:</h1>
+        <div id="saved-api"></div>
+        <button id="change-api-key">Change API Key?</button>
+
+        <p>Current URL: </p>
+        <p id="url"></p>
+        <button id="summarize-tradingview">Summarize this TradingView article?</button>
+        <p id="choices">OR</p>
+        <p id="not-tradingview">Select text to summarize</p>
+
+        <button id="summarize-selected">Summarize selected text?</button>
+        <p id="selectedText"></p>
+    </div>
+
+    
+  </body>
+</html>
