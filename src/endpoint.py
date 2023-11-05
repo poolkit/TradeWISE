@@ -1,12 +1,13 @@
 from fastapi import FastAPI
-from src.apicaller import OpenAPICaller
+from src.api_caller import OpenAPICaller
+from src.url_scraper import FetchTextFromURL
 from pydantic import BaseModel
 
 app = FastAPI()
 
 class InputData(BaseModel):
     openai_api_key: str
-    article: str
+    url: str
 
 @app.get("/")
 def home_page():
@@ -16,16 +17,15 @@ def home_page():
 def summarise(input_data: InputData):
     
     openai_api_key = input_data.openai_api_key
-    input_text = input_data.article
+    input_url = input_data.url
+
+    processor = FetchTextFromURL(input_url)
+    processed_text = processor.fetch_article()
+
+    if len(processed_text)==0:
+        return {"Result": "Error parsing the URL."}
 
     gptllm = OpenAPICaller(openai_api_key)
-    result = gptllm.run_llm(input_text)
+    result = gptllm.run_llm(processed_text)
 
-    try:
-        summary = result.split('\n\n')[0]
-        sentiment = result.split('\n\n')[1].split(': ')[1]
-        
-        return {"Summary": summary, "Sentiment": sentiment}
-
-    except:
-        return {"Result": result}
+    return {"Result": result}
