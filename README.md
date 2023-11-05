@@ -10,4 +10,3 @@ license: mit
 
 # TradeWISE - Take trades Wisely!
 Streamlining financial news and distilling key insights, empowering smarter trading decisions through LLMs.
-Hello
