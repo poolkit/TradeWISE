@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const homePageView = document.getElementById("homePage")
     const changeApiButton = document.getElementById("change-api-key")
     const summarizeTradingView = document.getElementById("summarize-tradingview")
-    const summarizeSelectedText = document.getElementById("summarize-selected")
-    const choice = document.getElementById("choices")
     const notTradingView = document.getElementById("not-tradingview")
 
     const tradingViewPrefix = "https://in.tradingview.com/news/"
@@ -18,8 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
     homePageView.style.display = "none";
     gettextView.style.display = "none";
     summarizeTradingView.style.display = "none";
-    summarizeSelectedText.style.display = "none";
-    choice.style.display = "none";
     notTradingView.style.display = "none";
 
     chrome.storage.sync.get("apiKey", function (result) {
@@ -54,26 +50,4 @@ document.addEventListener("DOMContentLoaded", function () {
             notTradingView.style.display = "block";
         }
     });
-
-    // chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-    //     if (message.text) {
-    //       const selectedText = message.text;
-    //       document.getElementById("selectedText").textContent = selectedText;
-    //       console.log('Selected text:', selectedText);
-    //       console.log("Hello")
-    //     }
-    //   });
-
-    chrome.contextMenus.create({
-        title: "Select",
-        contexts: ["selection"],
-        onclick: onRequest
-      });
-
-    function onRequest(info, tab) {
-    const selectedText = info.selectionText;
-    console.log("Selected text: " + selectedText);
-    }
-      
-
 });
