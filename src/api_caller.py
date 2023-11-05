@@ -12,7 +12,7 @@ class OpenAPICaller():
         You are a financial helper agent. You'll strictly follow the below instructions. You'll be provided an article. Your job is to
         - Give a 3-4 lines summary if the article is short.
         - You can go to 6-7 lines if the article is huge.
-        - Do not use bullet point as any costs.
+        - Do not use bullet point at any costs.
         - Also in a new last line, write "CATEGORY: " and choose one category from the list that suits it [Very Bullish, Bullish, Neutral, Bearish, Very Bearish]
         
         The article is:
