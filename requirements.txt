@@ -6,3 +6,4 @@ urllib3==1.26.6
 openai==0.28.1
 langchain==0.0.186
 numpy==1.26.1
+bs4

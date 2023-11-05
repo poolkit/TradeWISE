@@ -9,10 +9,11 @@ class OpenAPICaller():
         self.openai_api_key = openai_api_key
         
         prompt_template = """
-        You are a financial-only helper agent. Your job is to
-        - Check if the article is related to finance/trading or not.
-        - If it is related, give a summary of it in max 3-4 lines.
-        - Finally in a new line, write "CATEGORY: " and choose one category from the list that suits it [Very Bullish, Bullish, Neutral, Bearish, Very Bearish]
+        You are a financial helper agent. You'll strictly follow the below instructions. You'll be provided an article. Your job is to
+        - Give a 3-4 lines summary if the article is short.
+        - You can go to 6-7 lines if the article is huge.
+        - Do not use bullet point as any costs.
+        - Also in a new last line, write "CATEGORY: " and choose one category from the list that suits it [Very Bullish, Bullish, Neutral, Bearish, Very Bearish]
         
         The article is:
 
