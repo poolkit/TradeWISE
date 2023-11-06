@@ -24,17 +24,6 @@
       "48": "images/icon48.png",
       "128": "images/icon128.png"
     },
-    "content_scripts": [
-      {
-        "matches": ["https://in.tradingview.com/news/*"],
-        "js": ["content.js"]
-      }
-    ],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "host_permissions": [
-          "https://in.tradingview.com/news/*"
-    ]
+    "host_permissions": ["https://poolkit-tradewise.hf.space/*"]
 }
   

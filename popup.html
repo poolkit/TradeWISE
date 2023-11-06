@@ -6,7 +6,7 @@
   </head>
   <body>
 
-    <div id="homePage">
+    <div id="homePage", style="display: none;">
         <h2>Welcome to My Extension</h2>
         <p>Enter your API Key:</p>
         <input type="text" id="api-key">
@@ -20,9 +20,16 @@
 
         <p>Current URL: </p>
         <p id="url"></p>
-        <button id="summarize-tradingview">Summarize this TradingView article?</button>
-        <p id="not-tradingview">This is not a TradingView article. Please navigate to the article you want to summarize.</p>
+        <button id="summarize-tradingview" style="display: none;">Summarize this TradingView article?</button>
+        <p id="not-tradingview" style="display: none;">This page is not a TradingView article. Please navigate to the article you want to summarize.</p>
     </div>
+
+    <div id="displaySummary" style="display: none;">
+      <h1>Summary:</h1>
+      <div id="api-summary"></div>
+      <h1>Opinion:</h1>
+      <div id="api-opinion"></div>
+  </div>
 
     
   </body>
