@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const notTradingView = document.getElementById("not-tradingview");
     const summary = document.getElementById("api-summary");
     const opinion = document.getElementById("api-opinion");
+    const displayErrorView = document.getElementById("displayError");
+    const apiError = document.getElementById("api-error");
 
     const tradingViewPrefix = "https://in.tradingview.com/news/"
     const undesiredPrefix = "category="
@@ -56,17 +58,27 @@ document.addEventListener("DOMContentLoaded", function () {
             const currentUrl = await getCurrentUrl();
             const responseData = await fetchDataFromAPI(currentUrl);
             const resultText = responseData.Result;
-            const splitResult = resultText.split('\nCATEGORY:');
+            
+            try {
+                const splitResult = resultText.split('CATEGORY:');
+                // console.log(splitResult);
+                const responseSummary = splitResult[0].trim();
+                const responseOpinion = splitResult[1].trim();
 
-            const responseSummary = splitResult[0].trim();
-            const responseOpinion = splitResult[1].trim();
+                summary.textContent = responseSummary;
+                opinion.textContent = responseOpinion;
 
-            summary.textContent = responseSummary;
-            opinion.textContent = responseOpinion;
+                gettextView.style.display = "none";
+                displaySummaryView.style.display = "block";
+                summary.style.display = "block";
 
-            gettextView.style.display = "none";
-            displaySummaryView.style.display = "block";
-            summary.style.display = "block";
+            } catch (error) {
+                apiError.textContent = resultText._message;
+                gettextView.style.display = "none";
+                displayErrorView.style.display = "block";
+                apiError.style.display = "block";
+            }
+
         } catch (error) {
             console.error("Error:", error);
         } finally {
