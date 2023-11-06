@@ -22,10 +22,11 @@ def summarise(input_data: InputData):
     processor = FetchTextFromURL(input_url)
     processed_text = processor.fetch_article()
 
-    if len(processed_text)==0:
+    if not processed_text:
         return {"Result": "Error parsing the URL."}
 
     gptllm = OpenAPICaller(openai_api_key)
     result = gptllm.run_llm(processed_text)
+    print(f"Result: {result}")
 
     return {"Result": result}

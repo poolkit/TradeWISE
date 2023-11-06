@@ -37,8 +37,11 @@ class OpenAPICaller():
             )
 
     def run_llm(self, article:str):
-        output = self.llm_chain.run(article)
-        return output
+        try:
+            output = self.llm_chain.run(article)
+            return output
+        except Exception as e:
+            return e
 
 
 if __name__=="__main__":
