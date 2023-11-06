@@ -12,7 +12,7 @@ class FetchTextFromURL():
         text_data = [p_tag.get_text() for element in text_elements for p_tag in element.find_all("p")]
 
         if not text_data:
-            raise TypeError("List is empty")
+            raise TypeError("Simple scraper didn't work. Trying complex scraper...")
 
         return ' '.join(text_data)
 
