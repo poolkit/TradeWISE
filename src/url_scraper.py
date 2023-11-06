@@ -50,7 +50,7 @@ class FetchTextFromURL():
                 print(f"Failed to fetch data. Status code: {response.status_code}")
                 return None
 
-        except requests.exceptions.RequestException as e:
+        except Exception as e:
             print(f"An error occurred: {e}")
             return None
 
