@@ -58,10 +58,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const currentUrl = await getCurrentUrl();
             const responseData = await fetchDataFromAPI(currentUrl);
             const resultText = responseData.Result;
-            
+
             try {
                 const splitResult = resultText.split('CATEGORY:');
-                // console.log(splitResult);
                 const responseSummary = splitResult[0].trim();
                 const responseOpinion = splitResult[1].trim();
 
@@ -73,7 +72,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 summary.style.display = "block";
 
             } catch (error) {
-                apiError.textContent = resultText._message;
+                console.log(resultText);
+
+                if (typeof resultText === "string") {
+                    apiError.textContent = resultText;
+                } else {
+                    apiError.textContent = resultText._message;
+                }
+
                 gettextView.style.display = "none";
                 displayErrorView.style.display = "block";
                 apiError.style.display = "block";
@@ -108,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "Content-Type": "application/json",
-                  }
+                }
             });
 
             if (!response.ok) {
