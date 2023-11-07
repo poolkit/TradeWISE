@@ -23,7 +23,7 @@ def summarise(input_data: InputData):
     processed_text = processor.fetch_article()
 
     if not processed_text:
-        return {"Result": "Error parsing the URL."}
+        return {"Result": "Uh-oh! It seems we're experiencing some technical difficulties.."}
 
     gptllm = OpenAPICaller(openai_api_key)
     result = gptllm.run_llm(processed_text)
