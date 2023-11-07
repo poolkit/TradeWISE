@@ -63,6 +63,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 const responseSummary = splitResult[0].trim();
                 const responseOpinion = splitResult[1].trim();
 
+                if (responseOpinion.replace(/\s/g, '').toLowerCase() === "verybullish"){
+                    opinion.style.backgroundColor = '#abf7b4';
+                } else if (responseOpinion.replace(/\s/g, '').toLowerCase() === "bullish"){
+                    opinion.style.backgroundColor = '#cbf7ab';
+                } else if (responseOpinion.replace(/\s/g, '').toLowerCase() === "neutral"){
+                    opinion.style.backgroundColor = '#eef7ab';
+                } else if (responseOpinion.replace(/\s/g, '').toLowerCase() === "bearish"){
+                    opinion.style.backgroundColor = '#f7c7ab';
+                } else if (responseOpinion.replace(/\s/g, '').toLowerCase() === "verybearish"){
+                    opinion.style.backgroundColor = '#f7abab';
+                }
+
                 summary.textContent = responseSummary;
                 opinion.textContent = responseOpinion;
 
