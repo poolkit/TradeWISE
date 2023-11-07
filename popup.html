@@ -1,41 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>My Extension</title>
-    <script src="popup.js"></script>
-  </head>
-  <body>
 
-    <div id="homePage", style="display: none;">
-        <h2>Welcome to My Extension</h2>
-        <p>Enter your API Key:</p>
-        <input type="text" id="api-key">
-        <button id="save-api-key">Save</button>
+<head>
+  <title>My Extension</title>
+  <script src="popup.js"></script>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+
+<body>
+  <div class="header-box">
+    <h2>TradeWISE</h2>
+  </div>
+
+  <div id="homePage" , style="display: none;">
+    <p>Please enter your OpenAI API Key:
+    </p>
+    <input type="text" id="api-key">
+    <button id="save-api-key">Save</button>
+  </div>
+
+  <div id="getText" style="display: none;">
+    <button id="summarize-tradingview" style="display: none;">Summarize this TradingView article?</button>
+    <p id="not-tradingview" style="display: none;">This page is not a <strong>TradingView</strong> article. Please
+      navigate to the
+      article you want to summarize.</p>
+    <button id="change-api-key">Change API Key?</button>
+  </div>
+
+  <div id="loadingContainer" style="display: none;">
+    <div class="loading-content">
+        <div class="loader-container">
+            <div class="loader"></div>
+        </div>
+        <div class="loading-text">Loading...</div>
     </div>
+</div>
 
-    <div id="getText" style="display: none;">
-        <h1>Saved Input:</h1>
-        <div id="saved-api"></div>
-        <button id="change-api-key">Change API Key?</button>
+  <div id="displaySummary" style="display: none;">
+    <h1>Summary:</h1>
+    <div id="api-summary"></div>
+    <h1>Opinion:</h1>
+    <div id="api-opinion"></div>
+  </div>
 
-        <p>Current URL: </p>
-        <p id="url"></p>
-        <button id="summarize-tradingview" style="display: none;">Summarize this TradingView article?</button>
-        <p id="not-tradingview" style="display: none;">This page is not a TradingView article. Please navigate to the article you want to summarize.</p>
-    </div>
+  <div id="displayError" style="display: none;">
+    <h1>Error:</h1>
+    <div id="api-error"></div>
+  </div>
 
-    <div id="displaySummary" style="display: none;">
-      <h1>Summary:</h1>
-      <div id="api-summary"></div>
-      <h1>Opinion:</h1>
-      <div id="api-opinion"></div>
-    </div>
 
-    <div id="displayError" style="display: none;">
-      <h1>Error:</h1>
-      <div id="api-error"></div>
-    </div>
+</body>
 
-    
-  </body>
 </html>

@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const apiKeyInput = document.getElementById("api-key");
     const saveApiKeyButton = document.getElementById("save-api-key");
-    const savedText = document.getElementById("saved-api");
     const gettextView = document.getElementById("getText");
     const homePageView = document.getElementById("homePage");
     const displaySummaryView = document.getElementById("displaySummary");
@@ -13,15 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const opinion = document.getElementById("api-opinion");
     const displayErrorView = document.getElementById("displayError");
     const apiError = document.getElementById("api-error");
+    const loadView = document.getElementById("loadingContainer");
 
     const tradingViewPrefix = "https://in.tradingview.com/news/"
-    const undesiredPrefix = "category="
 
     chrome.storage.sync.get("apiKey", function (result) {
         const loadedKey = result.apiKey;
         if (loadedKey) {
             gettextView.style.display = "block";
-            savedText.textContent = loadedKey;
         } else {
             homePageView.style.display = "block";
         }
@@ -41,9 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) {
         var siteUrl = tabs[0].url;
-        document.getElementById('url').textContent = siteUrl;
 
-        if (siteUrl.startsWith(tradingViewPrefix) && !siteUrl.includes(undesiredPrefix)) {
+        if (siteUrl.length>=52 && siteUrl.startsWith(tradingViewPrefix) && !siteUrl.includes("=")) {
             summarizeTradingView.style.display = "block";
         } else {
             notTradingView.style.display = "block";
@@ -51,6 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     summarizeTradingView.addEventListener("click", async () => {
+        gettextView.style.display = "none";
+        loadView.style.display = "block";
         // Show a loading indicator, if desired
         summarizeTradingView.disabled = true;
 
@@ -67,22 +66,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 summary.textContent = responseSummary;
                 opinion.textContent = responseOpinion;
 
-                gettextView.style.display = "none";
+                loadView.style.display = "none";
                 displaySummaryView.style.display = "block";
-                summary.style.display = "block";
 
             } catch (error) {
                 console.log(resultText);
 
                 if (typeof resultText === "string") {
-                    apiError.textContent = resultText;
+                    apiError.innerHTML = resultText;
                 } else {
-                    apiError.textContent = resultText._message;
+                    apiError.innerHTML = resultText._message;
                 }
 
-                gettextView.style.display = "none";
+                loadView.style.display = "none";
                 displayErrorView.style.display = "block";
-                apiError.style.display = "block";
             }
 
         } catch (error) {
